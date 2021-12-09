@@ -6,10 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ingreso de datos</title>
-    <link rel="stylesheet" href="../css/estilo_ingresar.css">
+    <link rel="stylesheet" href="../css/estilo_ingresar-datos.css">
 </head>
 
+
 <body>
+
+    <?php
+    include('conexion.php');
+    ?>
+
+
     <form method="post" action="">
         <h1> Base de datos IMSS</h1>
         Nombre: <input type="text" name="nombre">
@@ -30,7 +37,7 @@
     </form>
 
     <?php
-    include('conexion.php');
+
     // Datos
     if (isset($_POST['registrar'])) {
 

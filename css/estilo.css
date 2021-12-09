@@ -1,0 +1,149 @@
+:root{
+    --color-azul: rgb(66,133,244);
+    --color-rojo: rgb(219,68,55);
+    --color-verde: rgb(15,157,88);
+    --color-amarillo: rgb(244,180,0);
+}
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    background-color: rgba(176, 210, 255,0.8);
+}
+
+.ok{
+    margin: auto;
+    width: 200px;
+    background-color: var(--color-verde);
+    padding: 10px;
+    text-align: center;
+    font-size: 1.2em;
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    color: #fff;
+    border-top-right-radius: 15px;
+
+
+}
+.no{
+    background-color: var(--color-rojo);
+}
+
+.barra{
+    background: var(--color-azul);
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulo__barra{
+    color: #fff;
+    font-size: 50px;
+}
+
+.integrantes{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+
+    width: 20%;
+
+    background-color: var(--color-amarillo);
+
+    padding: 10px;
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    border-top-left-radius: 15px;
+
+}
+.texto__integrantes{
+    font-size: 1.2em;
+}
+.encabezado{
+    font-weight: bold;
+    font-size: 1.6em;
+}
+
+.acciones{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 25%;
+    padding-bottom: 30px;
+    padding-top: 30px;
+
+    text-align: center;
+    margin: 50px auto;
+
+
+}
+
+.titulo__acciones{
+    margin-bottom: 10px;
+    font-size: 1.9em;
+}
+
+.botones{
+    display: grid;
+    margin-top: 55px;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(2,1fr);
+    gap: 15px;
+}
+
+.botones a{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+    padding: 15px;
+    border: 5px solid black;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.6em;
+}
+
+.botones a:hover{
+    background-color: rgba(0,0,0,0.9);
+    transition: 0.5s ease all;
+}
+
+.verde{
+    background-color: var(--color-verde);
+    border-top-left-radius: 25%;
+}
+
+.rojo{
+    background-color: var(--color-rojo);
+    border-bottom-right-radius: 25%;
+}
+
+.azul{
+    background-color: var(--color-azul);
+    border-top-right-radius: 25%;
+}
+
+.amarillo{
+    background-color: var(--color-amarillo);
+    border-bottom-left-radius: 25%;
+}
+
+
