@@ -25,7 +25,7 @@
 
         <div class="botones">
             <a href="ingresar.php" class="verde">Insertar datos</a>
-            <a href="" class="azul">Buscar datos</a>
+            <a href="buscar.php" class="azul">Buscar datos</a>
             <a href="" class="amarillo">Modificar datos</a>
             <a href="eliminar.php" class="rojo">Eliminar datos</a>
         </div>
