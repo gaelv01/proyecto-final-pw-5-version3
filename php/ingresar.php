@@ -16,21 +16,42 @@
     include('conexion.php');
     ?>
 
+    <div class="barra verde-c">
+        <h1 class="titulo__barra">Insertar datos</h1>
+    </div>
 
-    <form method="post" action="">
-        <h1> Base de datos IMSS</h1>
-        Nombre: <input type="text" name="nombre">
-        Apellido Paterno: <input type="text" name="apellidop" required>
-        Apellido Materno <input type="text" name="apellidom" required>
-        Edad: <input type="number" name="edad" required>
-        Telefono: <input type="text" name="telefono" required>
-        Correo: <input type="text" name="correo" required>
-        Estatura: <input type="text" name="estatura" required>
-        Peso: <input type="text" name="peso" required>
-        Tipo Sangre: <input type="text" name="sangre" required>
-        Motivo: <input type="text" name="motivo" required>
-        Fecha de la cita: <input type="date" name="fecha" required>
-        Hora de la cita: <input type="time" name="hora" required>
+    <div class="volver">
+        <a href="index.php">←</a>
+    </div>
+
+
+    <form method="post" action="" class="formulario">
+
+        <p class="encabezado__formulario">COMPLETE LOS SIGUIENTES CAMPOS</p>
+
+        <p>Nombre:</p>
+        <input type="text" name="nombre">
+        <p>Apellido Paterno:</p>
+        <input type="text" name="apellidop" required>
+        <p>Apellido Materno:</p>
+        <input type="text" name="apellidom" required>
+        <p>Edad:</p>
+        <input type="number" name="edad" required>
+        <p>Telefono:</p>
+        <input type="text" name="telefono" required>
+        <p>Correo:</p>
+        <input type="text" name="correo" required>
+        <p>Estatura:</p>
+        <input type="text" name="estatura" required>
+        <p>Peso:</p> <input type="text" name="peso" required>
+        <p>Tipo de sangre:</p>
+        <input type="text" name="sangre" required>
+        <p>Motivo:</p>
+        <input type="text" name="motivo" required>
+        <p>Fecha de la cita:</p>
+        <input type="date" name="fecha" required>
+        <p>Hora de la cita:</p>
+        <input type="time" name="hora" required>
 
         <input type="submit" name="registrar" value="Registrar">
         <input type="reset" value="Reiniciar">
@@ -65,9 +86,9 @@
         $id = mysqli_fetch_array($ejecutar);
 
         if ($resultado) {
-            echo '<p class="datos_correctos">¡Los datos se registraron correctamente! Tu ID es: ' . $id['id_paciente'] . '</p>';
+            echo '<p class="datos">¡Los datos se registraron correctamente! Tu ID es: ' . $id['id_paciente'] . '</p>';
         } else {
-            echo '<p class="datos_incorrectos">¡Hubo un error al registrar los datos!</p>';
+            echo '<p class="datos incorrectos">¡Hubo un error al registrar los datos!</p>';
         }
     }
 
