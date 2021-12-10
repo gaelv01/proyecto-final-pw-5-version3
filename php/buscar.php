@@ -11,73 +11,88 @@
 
 <body>
 
-    <div class="barra verde-c">
-        <h1 class="titulo__barra">Buscar datos</h1>
+
+    <div class="barra">
+        <h1 class="titulo__barra">Buscar Registros</h1>
     </div>
 
     <div class="volver">
+        <!-- Este será un botón para regresar a la página principal. -->
         <a href="index.php">←</a>
     </div>
 
-    <form action="" method="post">
-        Digita el ID que deseas consultar: <input type="number" name="id" placeholder="ID">
+
+    <form action="" method="post"> <!-- Este es el formulario para buscar un registro por ID. -->
+
+        Digite el ID que desea consultar: <input type="number" name="id" placeholder="ID">
         <input type="submit" value="Buscar" name="buscar">
+
+        <!-- Aquí hay una opción para mostrar todos los registros de la tabla. -->
+        <a href="mostrar.php">ó revise todos los registros...</a>
     </form>
 
     <?php
-    include("conexion.php");
-    if (isset($_POST['buscar'])) {
-        $id = $_POST['id'];
+    include("conexion.php");  // Incluímos la conexión a la base de datos.
+    if (isset($_POST['buscar'])) { // Si el botón de buscar está activado, procedemos a buscar.
+        $id = $_POST['id']; // Guardamos el ID.
 
 
         $consulta_id = "SELECT id_paciente FROM citas WHERE id_paciente = $id";
+        // Seleccionamos el ID en SQL para comprobar su existencia.
         $ejecutar = mysqli_query($conexion, $consulta_id);
+
         $convertir_i = mysqli_fetch_array($ejecutar);
         $id_convertido = $convertir_i['id_paciente'];
+        // Convertimos el ID guardado a un arreglo para poder evaluarlo.
 
-        if ($id_convertido) {
+        if ($id_convertido) {  // Si el id convertido existe, procedemos a realizar la búsqueda.
 
             $buscar = "SELECT * FROM citas WHERE id_paciente=$id";
+            // Comando SQL para buscar el id.
             $consulta = mysqli_query($conexion, $buscar) or die("No se pudo encontrar ese registro");
+            // Ejecutamos la consulta.
 
-            while ($registros = mysqli_fetch_array($consulta)) : ?>
+            while ($registros = mysqli_fetch_array($consulta)) {
+                
+                /* Mientras existan registros, se van a ir imprimiendo con las sentencias HTML. */
+                
+                ?>
 
                 <div class="tabla">
-                    <div class="titulo__tabla">Resultados de la búsqueda</div>
+                    <div class="titulo__tabla">Resultado de la búsqueda</div>
                     <div class="encabezado__tabla">ID</div>
                     <div class="encabezado__tabla">Nombre</div>
                     <div class="encabezado__tabla">Apellido paterno</div>
                     <div class="encabezado__tabla">Apellido materno</div>
                     <div class="encabezado__tabla">Edad</div>
                     <div class="encabezado__tabla">Teléfono</div>
-                    <div class="encabezado__tabla">Correo electrónico</div>
-                    <div class="encabezado__tabla">Estatura en metros</div>
-                    <div class="encabezado__tabla">Peso en kilogramos</div>
+                    <div class="encabezado__tabla">E-mail</div>
+                    <div class="encabezado__tabla">Estatura (m)</div>
+                    <div class="encabezado__tabla">Peso (kg)</div>
                     <div class="encabezado__tabla">Tipo de sangre</div>
                     <div class="encabezado__tabla">Motivo de la cita</div>
                     <div class="encabezado__tabla">Fecha de la cita</div>
                     <div class="encabezado__tabla">Hora de la cita</div>
-                    <div class="elemento__tabla"> <?= $registros['id_paciente']; ?> </div>
-                    <div class="elemento__tabla"> <?= $registros['nombre']; ?> </div>
-                    <div class="elemento__tabla"> <?= $registros['apellido_P']; ?> </div>
-                    <div class="elemento__tabla"> <?= $registros['apellido_M']; ?> </div>
-                    <div class="elemento__tabla"><?= $registros['edad']; ?> </div>
-                    <div class="elemento__tabla"><?= $registros['telefono']; ?> </div>
-                    <div class="elemento__tabla"><?= $registros['correo']; ?> </div>
-                    <div class="elemento__tabla"><?= $registros['estatura']; ?> </div>
-                    <div class="elemento__tabla"><?= $registros['peso']; ?> </div>
-                    <div class="elemento__tabla"><?= $registros['tipo_sangre']; ?> </div>
-                    <div class="elemento__tabla"><?= $registros['motivo']; ?> </div>
-                    <div class="elemento__tabla"><?= $registros['fecha_cita']; ?> </div>
-                    <div class="elemento__tabla"><?= $registros['hora_cita']; ?> </div>
+                    <!-- Mostramos los arreglos. -->
+                    <div class="elemento__tabla"><?= $registros['id_paciente']; ?></div>
+                    <div class="elemento__tabla"><?= $registros['nombre']; ?></div>
+                    <div class="elemento__tabla"><?= $registros['apellido_P']; ?></div>
+                    <div class="elemento__tabla"><?= $registros['apellido_M']; ?></div>
+                    <div class="elemento__tabla"><?= $registros['edad']; ?></div>
+                    <div class="elemento__tabla"><?= $registros['telefono']; ?></div>
+                    <div class="elemento__tabla"><?= $registros['correo']; ?></div>
+                    <div class="elemento__tabla"><?= $registros['estatura']; ?></div>
+                    <div class="elemento__tabla"><?= $registros['peso']; ?></div>
+                    <div class="elemento__tabla"><?= $registros['tipo_sangre']; ?></div>
+                    <div class="elemento__tabla"><?= $registros['motivo']; ?></div>
+                    <div class="elemento__tabla"><?= $registros['fecha_cita']; ?></div>
+                    <div class="elemento__tabla"><?= $registros['hora_cita']; ?></div>
                 </div>
 
-
-
-
-    <?php endwhile;
-        } else {
-            echo "<p class='datos incorrectos'>El registro que estás buscando no existe. </p>";
+    <?php
+            }
+        } else { // En caso de que el ID sea inválido, se manda un mensja diciendo que no existe.
+            echo "<p class='datos incorrectos'>¡Ese registro no existe!</p>";
         }
     }
 

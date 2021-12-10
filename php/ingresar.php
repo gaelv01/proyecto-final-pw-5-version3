@@ -13,19 +13,19 @@
 <body>
 
     <?php
-    include('conexion.php');
+    include('conexion.php'); // Incluímos la conexión a la base de datos.
     ?>
 
     <div class="barra verde-c">
         <h1 class="titulo__barra">Insertar datos</h1>
     </div>
 
-    <div class="volver">
+    <div class="volver">  <!-- Este será un botón para regresar a la página principal. -->
         <a href="index.php">←</a>
     </div>
 
 
-    <form method="post" action="" class="formulario">
+    <form method="post" action="" class="formulario">  <!-- Este formulario se encargará de recoger todos los datos que queramos obtener. -->
 
         <p class="encabezado__formulario">COMPLETE LOS SIGUIENTES CAMPOS</p>
 
@@ -60,9 +60,12 @@
     <?php
 
     // Datos
-    if (isset($_POST['registrar'])) {
+    if (isset($_POST['registrar'])) {  // Si el botón de registrar ha sido clickeado correctamente, realizamos el proceso de inserción.
 
-        $nombre = trim($_POST['nombre']);
+
+        // Guardamos los datos de método POST en variables, y con trim(), que recorta los espacios accidentales.
+
+        $nombre = trim($_POST['nombre']);  
         $apellidop = trim($_POST['apellidop']);
         $apellidom = trim($_POST['apellidom']);
         $edad = trim($_POST['edad']);
@@ -77,15 +80,24 @@
 
         $insertar = "INSERT INTO citas(nombre, apellido_P, apellido_M, edad, telefono, correo, estatura, peso, tipo_sangre, motivo, fecha_cita, hora_cita) VALUES ('$nombre','$apellidop','$apellidom', '$edad','$telefono','$correo','$estatura','$peso','$sangre','$motivo','$fecha','$hora')";
 
+        # Ésta es la sentencia SQL. En ella se aprecia que insertamos todos los datos de la base en sus respectivos campos.
+
         $resultado = mysqli_query($conexion, $insertar);
 
+        # Ejecutamos la sentencia SQL adjuntando la conexión establecida.
+
+        // Aquí realizamos el proceso de devolverle el ID al que está registrando los datos...
+
         $consultar_id = "SELECT id_paciente from citas WHERE telefono = '$telefono'";
-        $ejecutar = mysqli_query($conexion, $consultar_id);
+        // Seleccionamos el ID del paciente comparandolo con su número de teléfono, ya que este no puede ser diferente.
+        $ejecutar = mysqli_query($conexion, $consultar_id); // Ejecutamos la consulta.
 
 
         $id = mysqli_fetch_array($ejecutar);
 
-        if ($resultado) {
+        // Colocamos el resultado de la consulta por medio de un arreglo, en donde las posiciones serán los campos de la base de datos.
+
+        if ($resultado) { // Si el resultado se imprimió correctamente, mostramos un mensaje exitoso con el ID correspondiente.
             echo '<p class="datos">¡Los datos se registraron correctamente! Tu ID es: ' . $id['id_paciente'] . '</p>';
         } else {
             echo '<p class="datos incorrectos">¡Hubo un error al registrar los datos!</p>';
@@ -94,12 +106,6 @@
 
 
     ?>
-
-
-
-
-
-
 
 </body>
 
