@@ -1,4 +1,18 @@
+<!-- Realizado, comentado y codificado por:
+
+    Gael Vivas Nieto
+    Daniela Berenice Mendoza Ortega
+    Víctor Leonardo Ruíz Nieves
+
+
+
+    Para adquirir las versiones anteriores de este código y el mismo, dirijase a este repositorio:
+
+    https://github.com/gaelv01/proyecto-final-pw-5-version3
+-->
+
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -45,5 +59,8 @@
     </div>
 
 </body>
+
+
+
 
 </html>
