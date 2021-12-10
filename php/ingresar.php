@@ -20,12 +20,14 @@
         <h1 class="titulo__barra">Insertar datos</h1>
     </div>
 
-    <div class="volver">  <!-- Este será un botón para regresar a la página principal. -->
+    <div class="volver">
+        <!-- Este será un botón para regresar a la página principal. -->
         <a href="index.php">←</a>
     </div>
 
 
-    <form method="post" action="" class="formulario">  <!-- Este formulario se encargará de recoger todos los datos que queramos obtener. -->
+    <form method="post" action="" class="formulario">
+        <!-- Este formulario se encargará de recoger todos los datos que queramos obtener. -->
 
         <p class="encabezado__formulario">COMPLETE LOS SIGUIENTES CAMPOS</p>
 
@@ -65,7 +67,7 @@
 
         // Guardamos los datos de método POST en variables, y con trim(), que recorta los espacios accidentales.
 
-        $nombre = trim($_POST['nombre']);  
+        $nombre = trim($_POST['nombre']);
         $apellidop = trim($_POST['apellidop']);
         $apellidom = trim($_POST['apellidom']);
         $edad = trim($_POST['edad']);

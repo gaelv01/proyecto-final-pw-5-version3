@@ -17,35 +17,43 @@
 
 
     <div class="volver">
+        <!-- Volver a la página principal. -->
         <a href="index.php">←</a>
     </div>
 
     <form action="" method="post" class="formulario-id">
+        <!-- Este primer formulario solicita el ID que se desee modificar. -->
 
         Digita el ID que desea modificar: <input type="number" name="id" placeholder="ID">
         <input type="submit" value="Modificar" name="modificar">
     </form>
 
     <?php
-    include("conexion.php");
-    if (isset($_POST['modificar'])) {
-        $id = $_POST['id'];
+    include("conexion.php"); // Incluimos la conexión a la base de datos.
+    if (isset($_POST['modificar'])) { // Si el botón de modificar se ha clickeado correctamente, realizamos el proceso de modificar.
+        $id = $_POST['id']; // Guardamos el ID.
 
 
         $consulta_id = "SELECT id_paciente FROM citas WHERE id_paciente = $id";
+
+        //Sentencia SQL para validar el ID.
         $ejecutar = mysqli_query($conexion, $consulta_id);
         $convertir_i = mysqli_fetch_array($ejecutar);
         $id_convertido = $convertir_i['id_paciente'];
 
-        if ($id_convertido) {
+        // Ejecutamos y convertimos el ID a un arreglo.
+
+        if ($id_convertido) { // Si el ID convertido existe, entonces realiza la busqueda para modificar.
             $buscar = "SELECT * FROM citas WHERE id_paciente=$id";
             $consulta = mysqli_query($conexion, $buscar) or die("No se pudo encontrar ese registro");
+            // Comando y ejecución SQL para seleccionar los datos asociados con el ID.
 
-            while ($registros = mysqli_fetch_array($consulta)) {
+            while ($registros = mysqli_fetch_array($consulta)) { // Imprimimos los datos asociados con el ID.
 
     ?>
 
                 <form class="tabla-actualizacion" method="post" action="">
+                    <!-- Forumlario para actualizar los datos. -->
                     <div class="titulo__tabla-actualizacion">Datos encontrados</div>
                     <div class="encabezado__tabla-actualizacion">ID:</div>
                     <input class="campo__tabla-actualizacion" type="number" name="id_nuevo" readonly="readonly" value="<?= $registros['id_paciente']; ?>">
@@ -75,6 +83,7 @@
                     <input class="campo__tabla-actualizacion" type="time" name="hora_cita" value="<?= $registros['hora_cita']; ?>">
 
                     <input type="submit" value="Actualizar" name="actualizar">
+                    <!-- Botón para actualizar. -->
                 </form>
 
 
@@ -83,7 +92,7 @@
 
 
             }
-        } else {
+        } else { // Cuando el ID no existe, se mostrará un mensaje de error.
             echo "<p class='datos incorrectos'>¡El ID especificado no existe!</p>";
         }
     }
@@ -93,7 +102,7 @@
     <?php
 
 
-    if (isset($_POST['actualizar'])) {
+    if (isset($_POST['actualizar'])) { // Cuando el botón para actualizar se ha clickeado correctamente, realizamos el proceso de actualización.
 
 
         $nvID = $_POST['id_nuevo'];
@@ -110,22 +119,25 @@
         $nvFecha = $_POST['fecha_cita'];
         $nvHora = $_POST['hora_cita'];
 
+        /* Guardamos las nuevas variables. */
+
 
 
 
         $actualizar = "UPDATE citas SET nombre = '$nvNombre', apellido_P = '$nvApellidoP', apellido_M = '$nvApellidoM', edad = '$nvEdad', telefono = '$nvTelefono', correo = '$nvCorreo', estatura = '$nvEstatura', peso = '$nvPeso', tipo_sangre = '$nvSangre', motivo = '$nvMotivo',fecha_cita = '$nvFecha', hora_cita = '$nvHora' WHERE id_paciente LIKE '$nvID'";
 
-        $realizar = mysqli_query($conexion, $actualizar);
+        /* Sentencia SQL para actualizar los datos en la tabla.*/
 
-        if (!$realizar) {
+        $realizar = mysqli_query($conexion, $actualizar);
+        // Ejecutamos la actualización.
+
+        if (!$realizar) { // Si hubo un error al actualizar los datos, lo muestra en un mensaje.
             echo "<p class='datos incorrectos'>¡Error al actualizar!</p>";
-        } else {
+        } else { // En caso contrario, mostrar un mensaje que indique que los datos se actualizaron exitosamente.
             echo "<p class='datos'>¡Datos actualizados correctamente!</p>";
         }
     }
     ?>
-
-
 
 </body>
 

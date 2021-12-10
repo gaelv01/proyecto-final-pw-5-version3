@@ -22,7 +22,8 @@
     </div>
 
 
-    <form action="" method="post"> <!-- Este es el formulario para buscar un registro por ID. -->
+    <form action="" method="post">
+        <!-- Este es el formulario para buscar un registro por ID. -->
 
         Digite el ID que desea consultar: <input type="number" name="id" placeholder="ID">
         <input type="submit" value="Buscar" name="buscar">
@@ -53,10 +54,10 @@
             // Ejecutamos la consulta.
 
             while ($registros = mysqli_fetch_array($consulta)) {
-                
+
                 /* Mientras existan registros, se van a ir imprimiendo con las sentencias HTML. */
-                
-                ?>
+
+    ?>
 
                 <div class="tabla">
                     <div class="titulo__tabla">Resultado de la búsqueda</div>

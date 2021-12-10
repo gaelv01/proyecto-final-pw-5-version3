@@ -18,7 +18,8 @@
         <h1 class="titulo__barra">Base de datos IMSS</h1>
     </div>
 
-    <div class="acciones"> <!-- Una pequeña bienvenida :3 -->
+    <div class="acciones">
+        <!-- Una pequeña bienvenida :3 -->
         <h2 class="titulo__acciones">¡Bienvenid@!</h2>
         <p class="texto__acciones"> Sé bienvenid@ al sistema de gestión de registros del IMSS. <br>
             <b>¡Selecciona una acción para comenzar!</b>
@@ -35,7 +36,8 @@
 
 
 
-    <div class="integrantes">  <!-- Esto muestra los integrantes del equipo. -->
+    <div class="integrantes">
+        <!-- Esto muestra los integrantes del equipo. -->
         <p class="texto__integrantes encabezado">Realizado por:</p>
         <p class="texto__integrantes">Gael Vivas Nieto</p>
         <p class="texto__integrantes">Daniela Berenice Mendoza Ortega</p>
